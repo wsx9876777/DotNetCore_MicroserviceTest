@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting;
@@ -20,6 +21,12 @@ namespace Microservice
             Host.CreateDefaultBuilder(args)
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
+
+                    webBuilder.ConfigureAppConfiguration(x =>
+                    {
+
+                        x.AddJsonFile("BlackList.json",true,true);
+                    });
                     webBuilder.UseStartup<Startup>();
                 });
     }

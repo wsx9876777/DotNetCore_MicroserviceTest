@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microservice.Filter;
 using Microservice.Interface;
 using Microservice.Model;
 using Microsoft.AspNetCore.Mvc;
@@ -30,6 +31,7 @@ namespace Microservice.Controllers
         }
 
         [HttpGet]
+        [AddHeader("Author","123")]
         public async Task<IEnumerable<Announcement>> Get()
         {
             var list = await _announcementProvider.GetList();

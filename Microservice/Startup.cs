@@ -1,11 +1,14 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 using Microservice.Interface;
+using Microservice.Middleware_Software;
 using Microservice.Provider;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
@@ -31,6 +34,7 @@ namespace Microservice
             services.AddScoped<IConnectionFectory, ConnectionFectory>();
             services.AddScoped<IAnnouncementProvider, AnnouncementProvider>();
             services.AddControllers();
+            services.AddTransient<UseFactoryBlockIpMiddleware>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -40,6 +44,9 @@ namespace Microservice
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            //app.UseMiddleware<UseBlockIpMiddleware>();
+            app.UseMiddleware<UseFactoryBlockIpMiddleware>();
 
             app.UseHttpsRedirection();
 
@@ -51,6 +58,7 @@ namespace Microservice
             {
                 endpoints.MapControllers();
             });
+            
         }
     }
 }
