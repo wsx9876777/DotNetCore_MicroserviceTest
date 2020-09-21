@@ -6,12 +6,14 @@ using Microservice.Filter;
 using Microservice.Interface;
 using Microservice.Model;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.Extensions.Logging;
 
 namespace Microservice.Controllers
 {
     [ApiController]
     [Route("[controller]")]
+    
     public class AnnouncementController : ControllerBase
     {
         private static readonly string[] Summaries = new[]
@@ -31,8 +33,9 @@ namespace Microservice.Controllers
         }
 
         [HttpGet]
-        [AddHeader("Author","123")]
-        public async Task<IEnumerable<Announcement>> Get()
+        
+        [ServiceFilter(typeof(MyActionFilterAttribute))]
+        public async Task<IEnumerable<Announcement>> Get(string abc)
         {
             var list = await _announcementProvider.GetList();
 

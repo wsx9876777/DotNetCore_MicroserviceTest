@@ -25,7 +25,7 @@ namespace Microservice.Provider
         public async Task<IEnumerable<Announcement>> GetList()
         {
             IEnumerable<Announcement> data =null;
-            var sql = "Select * from ANNOUNCEMENT where id=@id";
+            var sql = "Select * from ANNOUNCEMENT";
             //var sql2 = $"update ANNOUNCEMENT set Title = @title  where id = @id";
             
             using (var conn = _connectionFectory.DbCoonection("begonia"))

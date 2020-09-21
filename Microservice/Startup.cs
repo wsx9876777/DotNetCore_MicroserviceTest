@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microservice.Filter;
 using Microservice.Interface;
 using Microservice.Middleware_Software;
+using Microservice.Model;
 using Microservice.Provider;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -30,10 +32,18 @@ namespace Microservice
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            
+            services.AddScoped<MyActionFilterAttribute>();
             services.AddScoped<IConnectionFectory, ConnectionFectory>();
             services.AddScoped<IAnnouncementProvider, AnnouncementProvider>();
-            services.AddControllers();
+
+            services.Configure<Model.Position>(Configuration.GetSection("Position"));
+           
+            
+            
+            
+            services.AddControllers(options=> {
+              
+            });
             services.AddTransient<UseFactoryBlockIpMiddleware>();
         }
 
@@ -46,7 +56,7 @@ namespace Microservice
             }
 
             //app.UseMiddleware<UseBlockIpMiddleware>();
-            app.UseMiddleware<UseFactoryBlockIpMiddleware>();
+            
 
             app.UseHttpsRedirection();
 

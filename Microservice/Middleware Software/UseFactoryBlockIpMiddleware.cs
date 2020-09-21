@@ -1,8 +1,12 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Schema;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace Microservice.Middleware_Software
@@ -19,7 +23,10 @@ namespace Microservice.Middleware_Software
         public async Task InvokeAsync(HttpContext context, RequestDelegate next)
         {
             var a = _configuration["block:0:ip"];
-            await next(context);
+
+            byte[] data = Encoding.UTF8.GetBytes("你好嗎");
+            await context.Response.Body.WriteAsync(data,0,data.Length);
+            //await next(context);
         }
     }
 }
