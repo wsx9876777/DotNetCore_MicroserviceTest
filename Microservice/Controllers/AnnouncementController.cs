@@ -37,6 +37,7 @@ namespace Microservice.Controllers
         [ServiceFilter(typeof(MyActionFilterAttribute))]
         public async Task<IEnumerable<Announcement>> Get(string abc)
         {
+            _logger.LogInformation("你好嗎");
             var list = await _announcementProvider.GetList();
 
             return list;

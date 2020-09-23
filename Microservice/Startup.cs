@@ -32,6 +32,8 @@ namespace Microservice
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            var a = services.BuildServiceProvider();
+
             services.AddScoped<MyActionFilterAttribute>();
             services.AddScoped<IConnectionFectory, ConnectionFectory>();
             services.AddScoped<IAnnouncementProvider, AnnouncementProvider>();
