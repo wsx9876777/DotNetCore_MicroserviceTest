@@ -19,7 +19,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Repository.Begonia\Repository.csproj" />
     <ProjectReference Include="..\Repository.Begonia\Repository.csproj" />
   </ItemGroup>
 

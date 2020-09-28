@@ -8,7 +8,7 @@ EXPOSE 443
 FROM mcr.microsoft.com/dotnet/core/sdk:3.1-buster AS build
 WORKDIR /src
 COPY ["MicroService.Begonia/MicroService.Begonia.csproj", "MicroService.Begonia/"]
-COPY ["../Repository.Begonia/Repository.csproj", "../Repository.Begonia/"]
+COPY ["Repository.Begonia/Repository.csproj", "Repository.Begonia/"]
 RUN dotnet restore "MicroService.Begonia/MicroService.Begonia.csproj"
 COPY . .
 WORKDIR "/src/MicroService.Begonia"

@@ -8,6 +8,7 @@ EXPOSE 443
 FROM mcr.microsoft.com/dotnet/core/sdk:3.1-buster AS build
 WORKDIR /src
 COPY ["Microservice.ThirdParty/Microservice.ThirdParty.csproj", "Microservice.ThirdParty/"]
+COPY ["ThirdParty.Ag/ThirdParty.Ag.csproj", "ThirdParty.Ag/"]
 RUN dotnet restore "Microservice.ThirdParty/Microservice.ThirdParty.csproj"
 COPY . .
 WORKDIR "/src/Microservice.ThirdParty"
