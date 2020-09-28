@@ -1,13 +1,12 @@
 version: '3.4'
 
 services:
-  microservice:
+  microservice.begonia:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
     ports:
       - "5001:80"
-
-  microservice002:
+  microservice.thirdparty:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
     ports:

@@ -3,10 +3,10 @@
   <PropertyGroup Label="Globals">
     <ProjectVersion>2.1</ProjectVersion>
     <DockerTargetOS>Linux</DockerTargetOS>
-    <ProjectGuid>1ffc1cdc-1082-48a7-bc04-33d74d101844</ProjectGuid>
+    <ProjectGuid>e06aa0ae-8da4-455a-a895-44d5e9eddd97</ProjectGuid>
     <DockerLaunchAction>LaunchBrowser</DockerLaunchAction>
     <DockerServiceUrl>{Scheme}://localhost:{ServicePort}/weatherforecast</DockerServiceUrl>
-    <DockerServiceName>microservice</DockerServiceName>
+    <DockerServiceName>microservice.begonia</DockerServiceName>
   </PropertyGroup>
   <ItemGroup>
     <None Include="docker-compose.override.yml">

@@ -1,15 +1,15 @@
 version: '3.4'
 
 services:
-  microservice:
-    image: ${DOCKER_REGISTRY-}microservice
+  microservice.begonia:
+    image: ${DOCKER_REGISTRY-}microservicebegonia
     build:
       context: .
-      dockerfile: Microservice/Dockerfile
+      dockerfile: MicroService.Begonia/Dockerfile
 
-  microservice002:
-    image: ${DOCKER_REGISTRY-}microservice002
+  microservice.thirdparty:
+    image: ${DOCKER_REGISTRY-}microservicethirdparty
     build:
       context: .
-      dockerfile: MicroService002/Dockerfile
+      dockerfile: Microservice.ThirdParty/Dockerfile
 
