@@ -6,13 +6,14 @@ using System.Data.SqlClient;
 using System.Text;
 using Dapper;
 using System.Data;
+using System.Threading;
 
 namespace Repository.DeveloperDb.Db
 {
     public class GradesRepository : IGragesRepository
     {
         private readonly SqlConnectionDeveloperDb _conn;
-
+        private static object _object = 1;
         public GradesRepository(SqlConnectionDeveloperDb conn)
         {
             this._conn = conn;
@@ -20,10 +21,22 @@ namespace Repository.DeveloperDb.Db
 
         public int Update(int id, int count)
         {
+            int result = 0;
             var proc = "dbo.usp_updateGrades";
-            var result =_conn.SqlConnection.Execute(
+            result = _conn.SqlConnection.Execute(
                 sql: proc,
                 param: new { id = 1, count = 1 },
+                transaction: _conn.SqlTransaction,
+                commandType: CommandType.StoredProcedure);
+            return result;
+        }
+
+        public int Insert()
+        {
+            int result = 0;
+            var proc = "dbo.usp_InsertGrades";
+            result = _conn.SqlConnection.Execute(
+                sql: proc,
                 transaction: _conn.SqlTransaction,
                 commandType: CommandType.StoredProcedure);
             return result;

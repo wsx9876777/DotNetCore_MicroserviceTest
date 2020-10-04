@@ -7,5 +7,6 @@ namespace Repository.DevelopDb.Interface
     public interface IGragesRepository
     {
         public int Update(int id, int count);
+        public int Insert();
     }
 }

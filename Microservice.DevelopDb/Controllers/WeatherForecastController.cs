@@ -30,5 +30,11 @@ namespace Microservice.DevelopDb.Controllers
             _gragesRepository.Update(1, 1);
             return Ok();
         }
+        [HttpGet("insert")]
+        public ActionResult Insert()
+        {
+            _gragesRepository.Insert();
+            return Ok();
+        }
     }
 }

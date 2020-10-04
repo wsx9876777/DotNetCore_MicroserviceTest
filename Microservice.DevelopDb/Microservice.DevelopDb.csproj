@@ -5,7 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Repository.Begonia\Repository.Begonia.csproj" />
     <ProjectReference Include="..\Repository.DevelopDb\Repository.DevelopDb.csproj" />
   </ItemGroup>
 
