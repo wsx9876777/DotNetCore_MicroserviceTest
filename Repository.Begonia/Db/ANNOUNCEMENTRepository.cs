@@ -1,7 +1,6 @@
 ﻿using Dapper;
 using Repository.Begonia.Interface;
 using Repository.Begonia.Models;
-using Repository.Db;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -24,6 +23,7 @@ namespace Repository.Begonia.Db
                 sql,
                 buffered: false,
                 transaction: _begonia.SqlTransaction);
+
             return data;
         }
 

@@ -1,9 +1,8 @@
-﻿using Microsoft.Extensions.Configuration;
-using System;
+﻿using System;
 using System.Data;
 using System.Data.SqlClient;
 
-namespace Repository.Begonia.Db
+namespace Repository.Base
 {
     public class SqlConnectionBase : IDisposable
     {
@@ -39,11 +38,15 @@ namespace Repository.Begonia.Db
             }
         }
         public void Open() => _sqlConnection.Open();
-        public void Commit()=>_sqlTransaction.Commit();
-        public void Rollback()=>_sqlTransaction.Rollback();
+        public void Commit() => _sqlTransaction.Commit();
+        public void Rollback() => _sqlTransaction.Rollback();
         public void Dispose()
         {
-            _sqlConnection.Dispose();
+            if (_sqlConnection != null)
+            {
+                _sqlConnection.Dispose();
+            }
+
         }
     }
 }

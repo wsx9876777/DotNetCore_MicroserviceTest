@@ -11,7 +11,7 @@ namespace Microservice.ThirdParty.Extensions
 {
     public static class AddThirdPartySercicesExtensions
     {
-        public static IServiceCollection AddThirdPartySercices(this IServiceCollection services,
+        public static IServiceCollection AddThirdPartyServices(this IServiceCollection services,
             IConfiguration configuration)
         {
             var obj = new ThirdPartyConfigs();

@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Text;
 
-namespace Repository.Db
+namespace Repository.Begonia.Db
 {
     public class ConfigurationRepository : IConfigurationRepository
     {

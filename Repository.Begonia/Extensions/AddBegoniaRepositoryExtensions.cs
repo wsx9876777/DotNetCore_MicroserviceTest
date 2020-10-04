@@ -1,12 +1,11 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Repository.Begonia.Db;
 using Repository.Begonia.Interface;
-using Repository.Db;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Repository.Extensions
+namespace Repository.Begonia.Extensions
 {
     public static class AddBegoniaRepositoryExtensions
     {

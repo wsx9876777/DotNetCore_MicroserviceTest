@@ -21,7 +21,7 @@ namespace Microservice.Test
     {
         private static IConfiguration _configuration;
         private static ILogger<WeatherForecastController> _logger;
-        private static SqlConnectionBegonia _sqlConnectionBegonia;
+        private static SqlConnectionDeveloperDb _sqlConnectionBegonia;
         private static IANNOUNCEMENT_GROUPRepository _aNNOUNCEMENT_GROUPRepository;
         private static IANNOUNCEMENTRepository _aNNOUNCEMENTRepository;
         [ClassInitialize]
@@ -46,11 +46,11 @@ namespace Microservice.Test
 
             Check.That(checkstr).IsNotEmpty();
 
-            _sqlConnectionBegonia = new SqlConnectionBegonia(_configuration);
+            _sqlConnectionBegonia = new SqlConnectionDeveloperDb(_configuration);
 
             _aNNOUNCEMENT_GROUPRepository = new ANNOUNCEMENT_GROUPRepository(_sqlConnectionBegonia);
 
-            _aNNOUNCEMENTRepository = new ANNOUNCEMENTRepository(_sqlConnectionBegonia);
+            _aNNOUNCEMENTRepository = new GradesRepository(_sqlConnectionBegonia);
 
             /*
             var announcementProvider = new Mock<IAnnouncementProvider>();

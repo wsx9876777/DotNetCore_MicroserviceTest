@@ -17,7 +17,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "Microservice": {
+    "Microservice.ThirdParty": {
       "commandName": "Project",
       "launchBrowser": true,
       "launchUrl": "ThirdParty",

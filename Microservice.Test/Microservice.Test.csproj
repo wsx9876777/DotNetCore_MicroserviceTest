@@ -17,7 +17,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\MicroService.Begonia\MicroService.Begonia.csproj" />
-    <ProjectReference Include="..\Repository.Begonia\Repository.csproj" />
+    <ProjectReference Include="..\Repository.Begonia\Repository.Begonia.csproj" />
   </ItemGroup>
 
 </Project>

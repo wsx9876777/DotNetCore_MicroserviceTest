@@ -1,8 +1,11 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Transactions;
+using Dapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
@@ -19,14 +22,14 @@ namespace MicroService.Begonia.Controllers
     {
         private readonly IConfiguration _configuration;
         private readonly ILogger<WeatherForecastController> _logger;
-        private readonly SqlConnectionBegonia _sqlConnectionBegonia;
+        private readonly SqlConnectionDeveloperDb _sqlConnectionBegonia;
         private readonly IANNOUNCEMENT_GROUPRepository _aNNOUNCEMENT_GROUPRepository;
         private readonly IANNOUNCEMENTRepository _aNNOUNCEMENTRepository;
 
         public WeatherForecastController(
             IConfiguration configuration,
             ILogger<WeatherForecastController> logger,
-            SqlConnectionBegonia sqlConnectionBegonia,
+            SqlConnectionDeveloperDb sqlConnectionBegonia,
             IANNOUNCEMENT_GROUPRepository aNNOUNCEMENT_GROUPRepository,
             IANNOUNCEMENTRepository aNNOUNCEMENTRepository)
         {
@@ -43,14 +46,23 @@ namespace MicroService.Begonia.Controllers
             IEnumerable<ANNOUNCEMENT> data = null;
             IEnumerable<ANNOUNCEMENT_GROUP> data2 = null;
 
-  
-            //_sqlConnectionBegonia.BegingSqlTransaction();
-            data2 = _aNNOUNCEMENT_GROUPRepository.GetAll();
-            _aNNOUNCEMENTRepository.Update(1, "7575");
-            _aNNOUNCEMENTRepository.GetAll();
-            //_sqlConnectionBegonia.Commit();
-            data = _aNNOUNCEMENTRepository.GetAll();
 
+            //_sqlConnectionBegonia.BegingSqlTransaction();
+            //data2 = _aNNOUNCEMENT_GROUPRepository.GetAll();
+            //var data3 = _aNNOUNCEMENTRepository.GetAll();
+            Task.Run(() =>
+            {
+                _aNNOUNCEMENTRepository.Update(1, "123");
+
+            });
+            //var a = data3.GetHashCode();
+            //_aNNOUNCEMENTRepository.Update(1, DateTime.Now.Millisecond.ToString());
+            // data3 = _aNNOUNCEMENTRepository.GetAll();
+            //var aa = data3.GetHashCode();
+            //_sqlConnectionBegonia.Commit();
+
+            data = _aNNOUNCEMENTRepository.GetAll();
+            
             return data;
         }
         [HttpGet("Tommy")]

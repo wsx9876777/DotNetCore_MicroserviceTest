@@ -19,7 +19,7 @@ namespace MicroService.Begonia.Configuration
             var builder = new ConfigurationBuilder();
             builder.AddJsonFile("appsettings.json");
             var config = builder.Build();
-            var conn = new SqlConnectionBegonia(config);
+            var conn = new SqlConnectionDeveloperDb(config);
             var repository = new ConfigurationRepository(conn);
             var data = repository.GetBegoniaConfigurations();
             var prefix = "BegoniaConfig";

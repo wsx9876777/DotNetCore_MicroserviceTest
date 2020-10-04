@@ -1,0 +1,12 @@
+docker pull mcr.microsoft.com/dotnet/core/aspnet:3.1-buster-slim
+
+docker build -f "D:\LinkedinLearning\Azure Microservices with .NET Core for Developers\Microservice\MicroService.Begonia\Dockerfile" --force-rm -t microservicebegonia:dev --target base  --label "com.microsoft.created-by=visual-studio" --label "com.microsoft.visual-studio.project-name=MicroService.Begonia" "D:\LinkedinLearning\Azure Microservices with .NET Core for Developers\Microservice" 
+
+docker run -dt -v "C:\Users\Tommy\vsdbg\vs2017u5:/remote_debugger:rw" -v "D:\LinkedinLearning\Azure Microservices with .NET Core for Developers\Microservice\MicroService.Begonia:/app" -v "D:\LinkedinLearning\Azure Microservices with .NET Core for Developers\Microservice:/src/" -v "C:\Users\Tommy\AppData\Roaming\Microsoft\UserSecrets:/root/.microsoft/usersecrets:ro" -v "C:\Users\Tommy\.nuget\packages\:/root/.nuget/fallbackpackages2" -v "C:\Program Files\dotnet\sdk\NuGetFallbackFolder:/root/.nuget/fallbackpackages" -e "DOTNET_USE_POLLING_FILE_WATCHER=1" -e "ASPNETCORE_LOGGING__CONSOLE__DISABLECOLORS=true" -e "ASPNETCORE_ENVIRONMENT=Development" -e "NUGET_PACKAGES=/root/.nuget/fallbackpackages2" -e "NUGET_FALLBACK_PACKAGES=/root/.nuget/fallbackpackages;/root/.nuget/fallbackpackages2" -p 51228:80 --name MicroService.Begonia --entrypoint tail microservicebegonia:dev -f /dev/null 
+c7001e01a125dae99fdc52397b72c134d9715a410160172ab42da7fac89d54f2
+
+docker exec -i c7001e01a125dae99fdc52397b72c134d9715a410160172ab42da7fac89d54f2 /bin/sh -c "if PID=$(pidof dotnet); then kill $PID; fi"
+
+docker rm -f c7001e01a125dae99fdc52397b72c134d9715a410160172ab42da7fac89d54f2
+
+docker run -dt -v "C:\Users\Tommy\vsdbg\vs2017u5:/remote_debugger:rw" -v "D:\LinkedinLearning\Azure Microservices with .NET Core for Developers\Microservice\MicroService.Begonia:/app" -v "D:\LinkedinLearning\Azure Microservices with .NET Core for Developers\Microservice:/src/" -v "C:\Users\Tommy\AppData\Roaming\Microsoft\UserSecrets:/root/.microsoft/usersecrets:ro" -v "C:\Users\Tommy\.nuget\packages\:/root/.nuget/fallbackpackages2" -v "C:\Program Files\dotnet\sdk\NuGetFallbackFolder:/root/.nuget/fallbackpackages" -e "DOTNET_USE_POLLING_FILE_WATCHER=1" -e "ASPNETCORE_LOGGING__CONSOLE__DISABLECOLORS=true" -e "ASPNETCORE_ENVIRONMENT=Development" -e "NUGET_PACKAGES=/root/.nuget/fallbackpackages2" -e "NUGET_FALLBACK_PACKAGES=/root/.nuget/fallbackpackages;/root/.nuget/fallbackpackages2" -p 51228:80 --name MicroService.Begonia --entrypoint tail microservicebegonia:dev -f /dev/null

@@ -35,7 +35,7 @@ namespace Microservice.ThirdParty
             services.AddControllers(options=> {
               
             });
-            services.AddThirdPartySercices(Configuration);
+            services.AddThirdPartyServices(Configuration);
             
             services.AddTransient<UseFactoryBlockIpMiddleware>();
         }

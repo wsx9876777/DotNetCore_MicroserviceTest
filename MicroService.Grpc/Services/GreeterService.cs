@@ -17,6 +17,15 @@ namespace MicroService.Grpc
 
         public override Task<HelloReply> SayHello(HelloRequest request, ServerCallContext context)
         {
+
+
+            return Task.FromResult(new HelloReply
+            {
+                Message = "Hello " + request.Name
+            });
+        }
+        public override Task<HelloReply> aaaaaa(HelloRequest2 request, ServerCallContext context)
+        {
             return Task.FromResult(new HelloReply
             {
                 Message = "Hello " + request.Name
